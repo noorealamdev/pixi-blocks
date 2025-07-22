@@ -10,27 +10,20 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       pixi-blocks
  *
- * @package CreateBlock
+ * @package PixiBlocks
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-/**
- * Registers the block using a `block.json` file, which improves the performance of block type registration.
- * Behind the scenes, it also registers all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
- * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
- */
-function create_block_pixi_blocks_block_init() {
-	$block_json_files = glob( plugin_dir_path( __FILE__ ) . 'src/blocks/*/block.json' );
 
-	foreach ( $block_json_files as $block_json_file ) {
-		$block_path = dirname( $block_json_file );
-		$block_name = basename( $block_path );
-		register_block_type( plugin_dir_path( __FILE__ ) . 'build/blocks/' . $block_name );
-	}
-}
-add_action( 'init', 'create_block_pixi_blocks_block_init' );
+// Define plugin constants.
+define( 'PIXIBLOCKS_VERSION', '0.1.0' );
+define( 'PIXIBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'PIXIBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
+// Load the autoloader.
+require_once PIXIBLOCKS_PLUGIN_DIR . 'includes/autoloader.php';
+
+// Initialize the plugin.
+PixiBlocks\Core\Plugin::get_instance();
