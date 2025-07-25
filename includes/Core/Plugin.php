@@ -44,7 +44,7 @@ final class Plugin {
         $this->init_hooks();
     }
 
-    
+
 
     /**
      * Include required files.
@@ -57,6 +57,7 @@ final class Plugin {
      * Hook into actions and filters.
      */
     private function init_hooks() {
+	    new BlockCategories();
         add_action( 'init', array( Blocks::class, 'register_blocks' ) );
         new Library();
     }
