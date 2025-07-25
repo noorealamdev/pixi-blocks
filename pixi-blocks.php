@@ -25,5 +25,8 @@ define( 'PIXIBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 // Load the autoloader.
 require_once PIXIBLOCKS_PLUGIN_DIR . 'includes/autoloader.php';
 
+// Load the REST API.
+require_once PIXIBLOCKS_PLUGIN_DIR . 'includes/class-pixi-blocks-rest-api.php';
+
 // Initialize the plugin.
 PixiBlocks\Core\Plugin::get_instance();

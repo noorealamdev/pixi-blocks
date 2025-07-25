@@ -18,6 +18,9 @@ class Blocks {
      * Register all blocks.
      */
     public static function register_blocks() {
+        // Register blocks defined via block.json.
+        
+
         $block_classes = glob( PIXIBLOCKS_PLUGIN_DIR . 'includes/Blocks/*.php' );
 
         foreach ( $block_classes as $block_class_file ) {

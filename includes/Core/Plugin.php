@@ -8,6 +8,7 @@
 namespace PixiBlocks\Core;
 
 use PixiBlocks\Core\Blocks;
+use PixiBlocks\Core\Library;
 
 /**
  * Class Plugin
@@ -57,5 +58,6 @@ final class Plugin {
      */
     private function init_hooks() {
         add_action( 'init', array( Blocks::class, 'register_blocks' ) );
+        new Library();
     }
 }
